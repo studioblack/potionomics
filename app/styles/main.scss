@@ -62,6 +62,14 @@ body {
     right: 0;
     overflow: hidden;
   }
+  &.modal-open {
+    overflow: hidden;
+
+    .gallery-modal-carousel,
+    .gallery-modal-dialog {
+      display: block;
+    }
+  }
 }
 
 .background-gradient {
@@ -298,6 +306,9 @@ img {
           margin-right: 0;
         }
       }
+      img {
+        vertical-align: middle;
+      }
     }
   @media #{$xs} {
     .mobile-menu {
@@ -375,7 +386,7 @@ img {
     }
       .mobile-menu-nav {
         float: left;
-        margin-top: 10px;
+        margin-top: 6px;
       }
 
       .mobile-menu-social {
@@ -390,6 +401,7 @@ img {
     padding-bottom: 62.5%;
     position: relative;
     overflow: hidden;
+    opacity: 0;
     width: 100%;
 
     .hero-layer {
@@ -427,8 +439,16 @@ img {
       z-index: 7;
     }
     .hero-layer-8 {
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
       background: url("/images/hero/hero_layer_8.png") top center / 100% no-repeat;
       z-index: 8;
+    }
+    .hero-layer-9 {
+      background: url("/images/hero/hero_layer_9.png") top center / 100% no-repeat;
+      z-index: 9;
     }
   }
 }
@@ -595,6 +615,30 @@ img {
     }
   }
 }
+.gallery-modal-dialog {
+  display: none;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 998;
+}
+  .gallery-modal-carousel {
+    cursor: default;
+    display: none;
+    left: 10%;
+    position: fixed;
+    top: 15%;
+    width: 80%;
+
+    @media #{$lg} {
+      left: 20%;
+      width: 60%;
+    }
+  }
 
 .development-blog {
   display: block;
@@ -609,52 +653,28 @@ img {
 }
 
 footer {
-  padding: 90px 20px 50px;
+  padding: 90px 20px 60px;
   max-width: 1280px;
   margin: 0 auto;
   font-size: 18px;
   line-height: 28px;
-}
-@media #{$xs} {
-  footer {
-    text-align: center;
-  }
-}
-@media #{$sm} {
-  footer {
-    padding: 90px 70px 50px;
-  }
-}
-@media #{$md} {
-  footer {
-    padding: 90px 110px 50px;
-  }
+  text-align: center;
 }
   .voracious-logo {
     display: block;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
-  .footer-nav {
-    margin-bottom: 50px;
-
-    a {
-      display: block;
-      margin-bottom: 10px;
+    @media #{$sm} {
+      .voracious-logo {
+        margin-bottom: 60px;
+      }
+      .footer-copy-left {
+        text-align: right;
+      }
+      .footer-copy-right {
+        text-align: left;
+      }
+      .footer-copy-text {
+        padding: 0 20px;
+      }
     }
-  }
-    .footer-nav-links {
-      margin-bottom: 25px;
-    }
-    .footer-nav-contact {
-
-    }
-  .footer-social {
-    margin-bottom: 60px;
-
-    a {
-      margin-right: 15px;
-    }
-    img {
-      vertical-align: middle;
-    }
-  }

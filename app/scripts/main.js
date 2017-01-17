@@ -74,6 +74,53 @@
   // Your custom JavaScript goes here
 
   $(document).ready(function(){
+    var lightboxInitialized = false;
+
+    function closeLightbox(e) {
+      $("body").removeClass("modal-open");
+      $('.gallery-modal-carousel').slick('unslick');
+      $(document).off('keydown', lightboxKeyActions);
+    }
+
+    function lightboxKeyActions(e) {
+      console.log("hit");
+        if (e.keyCode == 27) {
+          closeLightbox();
+        }
+        if(e.keyCode == 37) {
+          $('.gallery-modal-carousel').slick('slickPrev');
+        }
+        if(e.keyCode == 39) {
+          $('.gallery-modal-carousel').slick('slickNext');
+        }
+    }
+
+    $(".gallery-trigger").on("click", function(e){
+      var selectedSlide = $(this).data("slide") - 1;
+
+      e.preventDefault();
+
+      $("body").addClass("modal-open");
+
+      $('.gallery-modal-carousel').slick({
+        dots: true     
+      });
+
+      $(document).on('keydown', lightboxKeyActions);
+
+      $('.gallery-modal-carousel').slick("slickGoTo", selectedSlide);
+    });
+
+    $('.gallery-modal-carousel').on('init', function(){
+      lightboxInitialized = true;
+    });
+
+    $(".gallery-modal-carousel").on("click", function(e){
+      e.stopPropagation();
+    });
+
+    $(".gallery-modal-dialog").on("click", closeLightbox);
+
     $(".potionomics-logo").on("click", function(e){
       e.preventDefault();
       $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -89,6 +136,11 @@
       dots: true,
       arrows: false
     });
+
+    $('.section-hero').delay(200).animate({
+        opacity: 1
+      }, 800
+    );
 
     $(document).on("scroll", function(){
       var heroHeight = $(".section-hero").outerHeight(),
