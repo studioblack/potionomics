@@ -396,7 +396,7 @@ img {
 
 @media #{$lg} {
   .section-hero {
-    background: url("/images/hero/hero_layer_1.jpg") top center / 100% no-repeat;
+    background: url("../images/hero/hero_layer_1.jpg") top center / 100% no-repeat;
     background-attachment: fixed;
     padding-bottom: 62.5%;
     position: relative;
@@ -412,30 +412,30 @@ img {
     }
 
     .hero-layer-2 {
-      background: url("/images/hero/hero_layer_2.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_2.png") top center / 100% no-repeat;
       z-index: 2;
       // background-attachment: fixed;
     }
     .hero-layer-3 {
-      background: url("/images/hero/hero_layer_3.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_3.png") top center / 100% no-repeat;
       z-index: 3;
       // background-attachment: fixed;
     }
     .hero-layer-4 {
-      background: url("/images/hero/hero_layer_4.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_4.png") top center / 100% no-repeat;
       z-index: 4;
       // background-attachment: fixed;
     }
     .hero-layer-5 {
-      background: url("/images/hero/hero_layer_5.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_5.png") top center / 100% no-repeat;
       z-index: 5;
     }
     .hero-layer-6 {
-      background: url("/images/hero/hero_layer_6.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_6.png") top center / 100% no-repeat;
       z-index: 6;
     }
     .hero-layer-7 {
-      background: url("/images/hero/hero_layer_7.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_7.png") top center / 100% no-repeat;
       z-index: 7;
     }
     .hero-layer-8 {
@@ -443,11 +443,11 @@ img {
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: url("/images/hero/hero_layer_8.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_8.png") top center / 100% no-repeat;
       z-index: 8;
     }
     .hero-layer-9 {
-      background: url("/images/hero/hero_layer_9.png") top center / 100% no-repeat;
+      background: url("../images/hero/hero_layer_9.png") top center / 100% no-repeat;
       z-index: 9;
     }
   }
