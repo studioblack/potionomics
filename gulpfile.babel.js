@@ -22,7 +22,7 @@
 // This gulpfile makes use of new JavaScript features.
 // Babel handles this without us having to do anything. It just works.
 // You can read more about the new JavaScript features here:
-// https://babeljs.io/docs/learn-es2015/
+// https://babeljs.io/dist/learn-es2015/
 
 import path from 'path';
 import gulp from 'gulp';
@@ -52,7 +52,7 @@ gulp.task('images', () =>
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('docs/images'))
+    .pipe(gulp.dest('dist/images'))
     .pipe($.size({title: 'images'}))
 );
 
@@ -64,7 +64,7 @@ gulp.task('copy', () =>
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('docs'))
+  }).pipe(gulp.dest('dist'))
     .pipe($.size({title: 'copy'}))
 );
 
@@ -98,7 +98,7 @@ gulp.task('styles', () => {
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('docs/styles'));
+    .pipe(gulp.dest('dist/styles'));
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -122,7 +122,7 @@ gulp.task('scripts', () =>
       // Output files
       .pipe($.size({title: 'scripts'}))
       .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('docs/scripts'))
+      .pipe(gulp.dest('dist/scripts'))
 );
 
 // Scan your HTML for assets & optimize them
@@ -147,11 +147,11 @@ gulp.task('html', () => {
     })))
     // Output files
     .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
-    .pipe(gulp.dest('docs'));
+    .pipe(gulp.dest('dist'));
 });
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'docs/*', '!docs/.git'], {dot: true}));
+gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
 gulp.task('serve', ['scripts', 'styles'], () => {
@@ -215,7 +215,7 @@ gulp.task('pagespeed', cb =>
 // Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
 gulp.task('copy-sw-scripts', () => {
   return gulp.src(['node_modules/sw-toolbox/sw-toolbox.js', 'app/scripts/sw/runtime-caching.js'])
-    .pipe(gulp.dest('docs/scripts/sw'));
+    .pipe(gulp.dest('dist/scripts/sw'));
 });
 
 // See http://www.html5rocks.com/en/tutorials/service-worker/introduction/ for
@@ -224,7 +224,7 @@ gulp.task('copy-sw-scripts', () => {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
-  const rootDir = 'docs';
+  const rootDir = 'dist';
   const filepath = path.join(rootDir, 'service-worker.js');
 
   return swPrecache.write(filepath, {
